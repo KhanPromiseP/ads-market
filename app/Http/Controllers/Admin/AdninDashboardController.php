@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Models\Ad;
 use App\Models\AdView;
 use App\Models\AdClick;
