@@ -12,13 +12,13 @@
         <x-dropdown align="right">
             <x-slot name="trigger">
                 <button class="flex items-center space-x-2 focus:outline-none">
-                    @if(Auth::user()->profile_photo_path)
+                    @if(Auth::user()->profile_photo_path ?? '')
                         <img src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" 
                              alt="{{ Auth::user()->name }}" 
                              class="h-10 w-10 rounded-full object-cover border border-gray-300">
                     @else
                         <div class="h-10 w-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold border border-gray-300">
-                            {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                            {{ strtoupper(substr(Auth::user()->name ?? '', 0, 2)) }}
                         </div>
                     @endif
                 </button>
@@ -27,8 +27,8 @@
             <x-slot name="content">
                 <!-- User Info -->
                 <div class="px-4 py-3 border-b border-gray-200">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name ?? "" }}</div>
+                    <div class="text-sm text-gray-500">{{ Auth::user()->email ?? ""}}</div>
                 </div>
 
                 <!-- Links -->
@@ -40,7 +40,7 @@
                     <i class="bi bi-person-circle mr-2"></i> {{ __('Profile') }}
                 </x-dropdown-link>
 
-                @if(Auth::user()->is_admin)
+                @if(Auth::user()->is_admin ?? false)
                     <x-dropdown-link :href="route('admin.dashboard')">
                         <i class="bi bi-speedometer2 mr-2"></i> {{ __('Admin Dashboard') }}
                     </x-dropdown-link>

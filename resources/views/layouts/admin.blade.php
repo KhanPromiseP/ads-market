@@ -120,20 +120,21 @@
                 </button>
             </div>
 
-            <!-- User -->
-            <div class="p-4 border-b border-indigo-700">
-                <div class="flex items-center space-x-3">
-                    <div class="relative">
-                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random" 
-                             class="w-10 h-10 rounded-full border-2 border-indigo-400" alt="User">
-                        <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-indigo-800"></span>
-                    </div>
-                    <div>
-                        <p class="text-sm font-medium">{{ Auth::user()->name }}</p>
-                        <p class="text-xs text-indigo-200">{{ Auth::user()->email }}</p>
-                    </div>
-                </div>
-            </div>
+          <!-- User -->
+<div class="p-4 border-b border-indigo-700">
+    <div class="flex items-center space-x-3">
+        <div class="relative">
+            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name ?? 'User') }}&background=random" 
+                 class="w-10 h-10 rounded-full border-2 border-indigo-400" alt="User">
+            <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-indigo-800"></span>
+        </div>
+        <div>
+            <p class="text-sm font-medium">{{ Auth::user()->name ?? 'Guest' }}</p>
+            <p class="text-xs text-indigo-200">{{ Auth::user()->email ?? 'No email' }}</p>
+        </div>
+    </div>
+</div>
+
 
             <!-- Navigation -->
             <nav class="mt-4 space-y-1 px-2 flex-1 overflow-y-auto">
